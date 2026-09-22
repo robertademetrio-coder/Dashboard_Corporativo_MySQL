@@ -1,11 +1,16 @@
-#  Dashboard Corporativo - Integração MySQL & Power BI
+# Dashboard Corporativo - Integração MySQL & Power BI
 
-##  Descrição do Projeto
+## Descrição do Projeto
 Este projeto consiste no desenvolvimento de um **Dashboard Corporativo** voltado para a análise de dados de colaboradores, gerência e departamentos. O fluxo de trabalho englobou desde a ingestão de dados em um banco **MySQL** (modelo *azure_company*), passando pela extração, transformação e limpeza de dados (**ETL**) no **Power Query**, até a criação de um painel interativo no **Power BI Desktop**.
 
 ---
 
-##  Processo Executado (Tratamento de Dados no Power Query)
+## Link do Relatório Publicado
+*  **Acesse o Dashboard Online:** [Clique aqui para abrir no Power BI Service](https://app.powerbi.com/groups/me/reports/87ddaf43-b955-46c0-93d9-04bf340eee6f/8f831a00ae97436404c3?experience=power-bi)
+
+---
+
+## Processo Executado (Tratamento de Dados no Power Query)
 
 Durante a fase de transformação de dados, foram executadas as seguintes etapas para garantir a consistência e qualidade da análise:
 
@@ -21,20 +26,20 @@ Durante a fase de transformação de dados, foram executadas as seguintes etapas
 
 ---
 
-##  Conceitos de Transformação: Mesclar vs. Combinar Consultas
+## Conceitos de Transformação: Mesclar vs. Combinar Consultas
 
 ### Diferença Fundamental
 * **Mesclar Consultas (*Merge*):** Funciona de forma similar a um `JOIN` em SQL (à esquerda, interno, etc.). Une duas ou mais tabelas na **horizontal**, adicionando novas colunas a uma tabela com base em uma coluna de correspondência (chave primária/estrangeira).
 * **Combinar Consultas (*Append*):** Funciona de forma similar a um `UNION ALL` em SQL. Une duas ou mais tabelas na **vertical**, empilhando linhas que possuem a mesma estrutura de colunas.
 
-###  Justificativa da Escolha no Projeto
+### Justificativa da Escolha no Projeto
 Neste projeto, **apenas a operação de Mesclar Consultas foi adotada**. 
 
 **Justificativa:** A necessidade do negócio era enriquecer a tabela de colaboradores com informações complementares de outras entidades (como dados do Gerente e localização do Departamento). Como a estrutura do modelo relacional trazia entidades distintas conectadas por chaves (ex: `Ssn` e `Super_ssn`), o processo exigiu a adição de **colunas adicionais na horizontal** para cruzamento de dados, e não o empilhamento de novas linhas.
 
 ---
 
-##  Consulta SQL Utilizada
+## Consulta SQL Utilizada
 
 Abaixo está a estrutura da consulta SQL (DML) utilizada para a verificação e extração primária dos dados no ambiente MySQL local:
 
